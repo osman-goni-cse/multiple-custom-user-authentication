@@ -66,3 +66,10 @@ class AddCircular(models.Model):
   def __str__(self):
     return self.user.email + " " + self.department_name
 
+
+class ApplicantDocument(models.Model):
+  applicant = models.ForeignKey(Account, on_delete=models.CASCADE)
+  document_title = models.CharField(max_length=200)
+
+  def __str__(self):
+    return self.applicant.email + " " + self.document_title

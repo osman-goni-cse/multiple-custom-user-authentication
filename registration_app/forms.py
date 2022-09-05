@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from registration_app.models import AddCircular, ApplicantRegister, Account, AddCircular
+from registration_app.models import AddCircular, ApplicantRegister, Account, AddCircular, ApplicantDocument
 from django.core.exceptions import ValidationError
 
 class AccountForm(forms.ModelForm):
@@ -37,6 +37,12 @@ class AddCircularForm(forms.ModelForm):
   class Meta():
     model = AddCircular
     exclude = ['user', ]    
+
+
+class ApplicantDocumentForm(forms.ModelForm):
+  class Meta():
+    model = ApplicantDocument
+    exclude = ['applicant', ]    
     
     
     

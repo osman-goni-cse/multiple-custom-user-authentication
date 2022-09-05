@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from registration_app.forms import AccountForm, ApplicantRegisterForm, AddCircularForm
+from registration_app.forms import AccountForm, ApplicantRegisterForm, AddCircularForm, ApplicantDocumentForm
 from django.contrib.auth.models import User, Group
 
 from django.contrib.auth import authenticate, login, logout
@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
-from registration_app.models import AddCircular, ApplicantRegister, Account
+from registration_app.models import AddCircular, ApplicantRegister, Account, ApplicantDocument
 
 from django.utils.encoding import force_bytes, force_text
 
@@ -210,3 +210,28 @@ def add_circular_form(request):
   }
 
   return render(request, 'registration_app/add_circular_form.html', context=data)
+
+
+@login_required
+@permission_required('registration_app.add_applicantdocument')
+def add_applicant_document(request):
+  
+  applicant_document = ApplicantDocumentForm()
+
+  if request.method == 'POST':
+    print('applicant', request.user)
+    user = request.user
+    user.save()
+    obj = ApplicantDocument.objects.create(applicant=user)
+    applicant_document = ApplicantDocumentForm(request.POST, instance=obj)
+
+    if applicant_document.is_valid():
+      applicant_document.save()
+    else:
+      print(applicant_document.errors)
+
+  data = {
+    'applicant_document': applicant_document,
+  }
+
+  return render(request, 'registration_app/applicant_document.html', context=data)

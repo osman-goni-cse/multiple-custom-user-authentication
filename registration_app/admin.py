@@ -1,5 +1,5 @@
 from django.contrib import admin
-from registration_app.models import Account, ApplicantRegister, CircularRegister, AddCircular
+from registration_app.models import Account, ApplicantRegister, CircularRegister, AddCircular, ApplicantDocument
 from registration_app.forms import ApplicantRegisterForm, AccountForm, AddCircularForm
 from django.contrib.auth.admin import UserAdmin
 
@@ -28,3 +28,4 @@ admin.site.register(Account, AccountAdmin)
 admin.site.register(ApplicantRegister)
 admin.site.register(CircularRegister)
 admin.site.register(AddCircular)
+admin.site.register(ApplicantDocument)

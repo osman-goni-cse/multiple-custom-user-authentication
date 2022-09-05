@@ -15,8 +15,10 @@ urlpatterns = [
     path('activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/',  
         views.activate, name='activate'),  
 
-    path('add_circular_admin', views.add_circular_admin, name='add_circular_admin'),
-    path('add_circular_form', views.add_circular_form, name='add_circular_form'),
+    path('add_circular_admin/', views.add_circular_admin, name='add_circular_admin'),
+    path('add_circular_form/', views.add_circular_form, name='add_circular_form'),
+    path('add_applicant_document/', views.add_applicant_document, name='add_applicant_document'),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()

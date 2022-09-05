@@ -1,0 +1,14 @@
+{% extends 'registration_app/base.html' %}
+
+{% block body_block %}
+  <h3>Add Document</h3>
+  <form action="{% url 'registration_app:add_applicant_document' %}" method="POST">
+    {% csrf_token %}
+
+    {{applicant_document.as_p}}
+
+    <br>
+    <input class="btn btn-primary" type="submit" value="Add">
+
+  </form>
+{% endblock body_block %}
