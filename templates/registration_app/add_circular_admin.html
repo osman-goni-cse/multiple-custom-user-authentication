@@ -1,0 +1,19 @@
+{% extends 'registration_app/base.html' %}
+
+{% block body_block %}
+  <h3>Add Circular Admin</h3>
+  <form action="{% url 'registration_app:add_circular_admin' %}" method="POST">
+    {% csrf_token %}
+    {% comment %} <label for="email">Email:</label>
+    <input class="form-control w-50" type="text" name="email" id="id_email" placeholder="Enter Email" required>
+
+    <label for="password">Password:</label>
+    <input class="form-control w-50" type="password" name="password" id="id_password" placeholder="Enter Password" required> {% endcomment %}
+
+    {{circular.as_p}}
+
+    <br>
+    <input class="btn btn-primary" type="submit" value="Add">
+
+  </form>
+{% endblock body_block %}
