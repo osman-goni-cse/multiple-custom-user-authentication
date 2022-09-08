@@ -1,0 +1,14 @@
+{% extends 'registration_app/base.html' %}
+
+{% block body_block %}
+  <h3>Add New Memorandum</h3>
+  <form action="{% url 'circular_admin:new-memorandum' %}" method="POST">
+    {% csrf_token %}
+
+    {{memo_form.as_p}}
+
+    <br>
+    <input class="btn btn-primary" type="submit" value="Add">
+
+  </form>
+{% endblock body_block %}

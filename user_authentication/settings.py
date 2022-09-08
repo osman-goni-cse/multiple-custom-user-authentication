@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'registration_app',
+    'circular_admin',
 ]
 
 MIDDLEWARE = [
